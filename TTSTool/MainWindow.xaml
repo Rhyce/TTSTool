@@ -1,0 +1,34 @@
+﻿<Window x:Class="TTSTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TTSTool"
+        mc:Ignorable="d"
+        Title="TTS Tool" Height="350" Width="550" ResizeMode="CanMinimize">
+    <Grid>
+        <Button Content="Output" Margin="0,0,10,19" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Height="40"/>
+        <StatusBar Height="19" VerticalAlignment="Bottom">
+            <TextBlock TextWrapping="Wrap" Text="Built by Rhyce Smith rhycesmith.com" FontSize="10"/>
+        </StatusBar>
+        <GroupBox Header="Settings" Margin="10,10,10,0" Height="77" VerticalAlignment="Top">
+            <Grid Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="153*"/>
+                    <ColumnDefinition Width="359*"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Output" Width="344" HorizontalAlignment="Right" Grid.Column="1" Height="46" VerticalAlignment="Top">
+                    <Button Content="Save to..." HorizontalAlignment="Right" Width="70"/>
+                </GroupBox>
+                <GroupBox Header="Voice Select" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="143">
+                    <ComboBox Margin="0" Width="123"/>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Text to output" Margin="10,92,10,163">
+            <TextBox TextWrapping="Wrap" Text="TextBox"/>
+        </GroupBox>
+        <Button Content="Listen" Margin="329,0,115,19" VerticalAlignment="Bottom" Height="40"/>
+
+    </Grid>
+</Window>
