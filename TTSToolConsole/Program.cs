@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Speech.Synthesis;
@@ -13,26 +15,30 @@ namespace TTSTool
         {
 
             string TextToSpeak;
-
+            
             // Initialize a new instance of the SpeechSynthesizer.  
             SpeechSynthesizer synth = new SpeechSynthesizer();
 
             List<InstalledVoice> installedVoices = synth.GetInstalledVoices().ToList();
+
+            int i = 0;
             foreach(InstalledVoice voice in installedVoices)
             {
-                Console.WriteLine(voice.VoiceInfo.Name);
+                Console.WriteLine($"{i}) {voice.VoiceInfo.Name}    |    {voice.VoiceInfo.Gender}");
+                i++;
             }
-
+            Console.Write("Select voice: ");
+            int SelectedVoice = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Selected voice {installedVoices[SelectedVoice].VoiceInfo.Name}");
             Console.Write("Text to output: ");
+            
             TextToSpeak = Console.ReadLine();
-            synth.SelectVoice("Microsoft Eva Mobile");
+            synth.SelectVoice(installedVoices[SelectedVoice].VoiceInfo.Name);
             // Configure the audio output.   
-            synth.SetOutputToDefaultAudioDevice();
-
+            synth.SetOutputToWaveFile($@"{Directory.GetCurrentDirectory()}\{TextToSpeak}.wav");
             synth.Speak(TextToSpeak);
-            synth.SetOutputToWaveFile($"{Console.ReadLine()}.wav");
-            synth.Speak(TextToSpeak);
-
+            Console.WriteLine($@"Output file to: {Directory.GetCurrentDirectory()}");
+            
             synth.Dispose();
 
         }
