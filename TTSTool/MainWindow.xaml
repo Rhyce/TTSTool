@@ -5,30 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TTSTool"
         mc:Ignorable="d"
-        Title="TTS Tool" Height="350" Width="550" ResizeMode="CanMinimize">
+        Title="TTS Tool" Height="350" Width="600" ResizeMode="CanMinimize">
     <Grid>
-        <Button Content="Output" Margin="0,0,10,19" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Height="40"/>
-        <StatusBar Height="19" VerticalAlignment="Bottom">
-            <TextBlock TextWrapping="Wrap" Text="Built by Rhyce Smith rhycesmith.com" FontSize="10"/>
+        <StatusBar Height="20" VerticalAlignment="Bottom">
+            <Hyperlink NavigateUri="https://rhyce.dev" RequestNavigate="Hyperlink_RequestNavigate" FontSize="10">
+                Rhyce.dev
+            </Hyperlink>
+            <Hyperlink NavigateUri="https://github.com/Rhyce/TTSTool" RequestNavigate="Hyperlink_RequestNavigate" FontSize="10">
+                GitHub
+            </Hyperlink>
+            <TextBlock x:Name="CurrentOutputDisplayText" FontSize="10">
+                Output:
+            </TextBlock>
         </StatusBar>
-        <GroupBox Header="Settings" Margin="10,10,10,0" Height="77" VerticalAlignment="Top">
+        <GroupBox Header="Settings" Margin="10,10,10,0" Height="85" VerticalAlignment="Top">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="153*"/>
-                    <ColumnDefinition Width="359*"/>
+                    <ColumnDefinition Width="101*"/>
+                    <ColumnDefinition Width="180*"/>
                 </Grid.ColumnDefinitions>
-                <GroupBox Header="Output" Width="344" HorizontalAlignment="Right" Grid.Column="1" Height="46" VerticalAlignment="Top">
-                    <Button Content="Save to..." HorizontalAlignment="Right" Width="70"/>
+                <GroupBox Header="Output Folder" Width="344" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,0,10">
+                    <Grid>
+                        <TextBox x:Name="OutputFolder" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,3" Width="277" TextChanged="OutputName_TextChanged"/>
+                        <Button Content="Browse" Margin="282,0,0,0" Height="23" VerticalAlignment="Center" Click="Button_Click" />
+                    </Grid>
                 </GroupBox>
-                <GroupBox Header="Voice Select" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="143">
-                    <ComboBox Margin="0" Width="123"/>
+                <GroupBox Header="Voice Select" HorizontalAlignment="Left" Height="46" VerticalAlignment="Top" Width="192">
+                    <ComboBox x:Name="VoiceDropdown" Margin="0,0,4,0" ContextMenuClosing="VoiceDropdown_ContextMenuClosing"/>
                 </GroupBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Text to output" Margin="10,92,10,163">
-            <TextBox TextWrapping="Wrap" Text="TextBox"/>
+        <GroupBox Header="Text to output" Margin="10,100,10,155">
+            <TextBox x:Name="TextToSpeak" TextWrapping="Wrap" Text="TextBox"/>
         </GroupBox>
-        <Button Content="Listen" Margin="329,0,115,19" VerticalAlignment="Bottom" Height="40"/>
+        <GroupBox Header="Output Name" Margin="10,0,10,107" Height="43" VerticalAlignment="Bottom">
+            <TextBox x:Name="OutputName" TextWrapping="Wrap" Height="18" VerticalAlignment="Top" TextChanged="OutputName_TextChanged"/>
+        </GroupBox>
+        <Grid HorizontalAlignment="Left" Height="50" Margin="384,247,0,0" VerticalAlignment="Top" Width="200">
+            <Button Content="Listen" Margin="10,10,0,10" HorizontalAlignment="Left" Width="80"/>
+            <Button x:Name="Save_BTN" Content="Save" Margin="0,10,10,10" HorizontalAlignment="Right" Width="80" Click="Save_BTN_Click"/>
+        </Grid>
 
     </Grid>
 </Window>
