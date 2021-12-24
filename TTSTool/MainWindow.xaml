@@ -42,7 +42,7 @@
             <TextBox x:Name="OutputName" TextWrapping="Wrap" Height="18" VerticalAlignment="Top" TextChanged="OutputName_TextChanged"/>
         </GroupBox>
         <Grid HorizontalAlignment="Left" Height="50" Margin="384,247,0,0" VerticalAlignment="Top" Width="200">
-            <Button Content="Listen" Margin="10,10,0,10" HorizontalAlignment="Left" Width="80"/>
+            <Button Content="Listen" Margin="10,10,0,10" HorizontalAlignment="Left" Width="80" IsEnabled="False"/>
             <Button x:Name="Save_BTN" Content="Save" Margin="0,10,10,10" HorizontalAlignment="Right" Width="80" Click="Save_BTN_Click"/>
         </Grid>
 

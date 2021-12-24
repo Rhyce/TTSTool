@@ -64,9 +64,18 @@ namespace TTSTool
         {
             SetOutputPath();
 
+
             synth.SelectVoice(installedVoices[VoiceDropdown.SelectedIndex].VoiceInfo.Name);
-            synth.SetOutputToWaveFile(SetOutputPath());
+
+            /////
+            ///Set Speech Audio Formatting
+            ///
+            System.Speech.AudioFormat.SpeechAudioFormatInfo audioFormatInfo = new System.Speech.AudioFormat.SpeechAudioFormatInfo(84300, System.Speech.AudioFormat.AudioBitsPerSample.Sixteen, System.Speech.AudioFormat.AudioChannel.Stereo);
+            
+            synth.SetOutputToWaveFile(SetOutputPath(), audioFormatInfo);
             synth.Speak(TextToSpeak.Text);
+
+            synth.SetOutputToNull();
         }
 
         private void VoiceDropdown_ContextMenuClosing(object sender, ContextMenuEventArgs e)
